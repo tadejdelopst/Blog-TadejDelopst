@@ -12,7 +12,7 @@
 
 <p>
   <strong>Author:</strong>
-  <%= @post.user.try(:email) %>
+  <%= @post.user.try(:name) || "Anonimen Avtor" %>
 </p>
 
 <%= display_post_show_links(@post) %>
