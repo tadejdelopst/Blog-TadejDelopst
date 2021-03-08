@@ -1,18 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @post.title %>
-</p>
+<div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+	<h1 class="text-center"><%= @post.title %></h1>
+	<ul class="list-inline text-center">
+	    <li><h6><%= @post.user.try(:name) || "Anonimen Avtor" %></h6></li>
+	    <li><h7><%= @post.created_at.strftime('%d.%m.%Y') %></h6></li>
+	</ul>
+    <p class="lead text-center"><%= @post.body %></p>
 
-<p>
-  <strong>Body:</strong>
-  <%= @post.body %>
-</p>
-
-<p>
-  <strong>Author:</strong>
-  <%= @post.user.try(:name) || "Anonimen Avtor" %>
-</p>
+</div>
 
 <%= display_post_show_links(@post) %>

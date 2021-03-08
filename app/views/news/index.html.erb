@@ -1,29 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>News</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Title</th>
-      <th>Body</th>
-      <th>Author</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<h1 class="blog-post-title">Novice</h1>
+  <div class="row mb-2">
     <% @news.each do |news| %>
-      <tr>
-        <td><%= news.title %></td>
-        <td><%= news.body %></td>
-        <td><%= news.user.try(:name) || "Anonimen avtor:)"%></td>
-        <%= display_news_links(news) %>
-      </tr>
+        <div class="col-md-6">
+          <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+            <div class="col p-4 d-flex flex-column position-static">
+              <strong class="d-inline-block mb-2 text-primary"><%= news.user.try(:name) || "Anonimen avtor:)" %></strong>
+              <h3 class="mb-0"><%= news.title %></h3>
+              <div class="mb-1 text-muted"><%= news.created_at.strftime('%d.%m.%Y') %></div>
+              <p class="card-text mb-auto"><%= news.body.truncate(50, separator: /\s/) %></p>
+              <p></p>
+              <%= display_news_links(news) %>
+            </div>
+          </div>
+        </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
 <br>
 
-<%= link_to 'New News', new_news_path %>
+<%= link_to 'Dodaj Novico', new_news_path, class:'btn btn-md btn-outline-primary' %>

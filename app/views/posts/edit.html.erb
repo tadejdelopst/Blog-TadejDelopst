@@ -1,6 +1,9 @@
-<h1>Editing Post</h1>
+<h1>Editing Post: <%= @post.title %></h1>
+<div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+		<%= render 'form', post: @post %>
+	<p></p>
+	<%= link_to 'Preberi več', @post, class:'btn btn-sm btn-outline-secondary' %> |
+	<%= link_to 'Nazaj', posts_path, class:'btn btn-sm btn-outline-secondary' %>
+</div>
 
-<%= render 'form', post: @post %>
 
-<%= link_to 'Show', @post %> |
-<%= link_to 'Back', posts_path %>

@@ -1,6 +1,8 @@
-<h1>Editing News</h1>
+<h1>Urejanje novice: <%= @news.title %></h1>
+<div class="col-lg-12 col-md-12 col-sm-12 post-title-block">
+		<%= render 'form', news: @news %>
+	<p></p>
+	<%= link_to 'Preberi več', @news, class:'btn btn-sm btn-outline-secondary' %> |
+	<%= link_to 'Nazaj', news_index_path, class:'btn btn-sm btn-outline-secondary' %>
+</div>
 
-<%= render 'form', news: @news %>
-
-<%= link_to 'Show', @news %> |
-<%= link_to 'Back', news_index_path %>

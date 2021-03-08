@@ -1,18 +1,18 @@
 module NewsHelper
 	def display_news_links(news)
-		html = "<td> #{link_to 'Show', news} </td>"
-    	html += "<td> #{link_to 'Edit', edit_news_path(news) if current_user == news.user }  </td>"
-    	html += "<td> #{link_to 'Destroy', news, method: :delete, data: { confirm: 'Are you sure?'} if current_user == news.user }  </td>"
-    	html.html_safe
+    	capture do
+			concat link_to('Preberi več', news, class:'btn btn-sm btn-outline-secondary')
+    	end
 	end
 
 	def display_news_show_links(news)
-		html = ""
-		if current_user == news.user
-			html += link_to 'Edit', edit_news_path(news)
-			html +=  ' | '
+		capture do
+			if current_user == news.user
+				concat link_to('Uredi', edit_news_path(news), class:'btn btn-sm btn-outline-secondary')
+	        	concat link_to('Izbriši', news, method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-sm btn-outline-secondary')
+				concat  ' | '
+			end
+			concat link_to 'Nazaj',  news_index_path, class:'btn btn-sm btn-outline-secondary'
 		end
-		html +=  link_to 'Back', news_index_path 
-		html.html_safe
 	end	
 end
